@@ -1,4 +1,4 @@
-package AnswersOnCommonQuestionsTest;
+package answers.on.common.questions.test;
 
 import org.junit.After;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import pageObjects.MainPage;
+import page.objects.MainPage;
 
 import static org.junit.Assert.assertEquals;
 

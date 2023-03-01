@@ -1,4 +1,4 @@
-package OrderScooterTest;
+package order.scooter.test;
 
 import org.junit.After;
 import org.junit.Test;
@@ -7,7 +7,7 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import pageObjects.OrderScooter;
+import page.objects.OrderScooter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

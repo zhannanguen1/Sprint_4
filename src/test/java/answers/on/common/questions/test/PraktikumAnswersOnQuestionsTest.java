@@ -2,10 +2,7 @@ package answers.on.common.questions.test;
 
 import org.junit.After;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import page.objects.MainPage;
@@ -21,10 +18,8 @@ public class PraktikumAnswersOnQuestionsTest {
         driver = new ChromeDriver(options);
         driver.get("https://qa-scooter.praktikum-services.ru/");
 
-        WebElement element = driver.findElement(By.className("Home_FourPart__1uthg"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
-
         MainPage objMainPage = new MainPage(driver);
+        objMainPage.scrollToQuestions();
         objMainPage.closeCookieWindow();
         objMainPage.clickOnFirstQuestion();
         String actual = objMainPage.getTextFirstQuestion();
@@ -39,10 +34,8 @@ public class PraktikumAnswersOnQuestionsTest {
         driver = new ChromeDriver(options);
         driver.get("https://qa-scooter.praktikum-services.ru/");
 
-        WebElement element = driver.findElement(By.id("accordion__panel-7"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
-
         MainPage objMainPage = new MainPage(driver);
+        objMainPage.scrollToQuestions();
         objMainPage.closeCookieWindow();
         objMainPage.clickOnLastQuestion();
         String actual = objMainPage.getTextLastQuestion();

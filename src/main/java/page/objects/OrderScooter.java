@@ -1,8 +1,6 @@
 package page.objects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -27,13 +25,24 @@ public class OrderScooter {
     private final By ORDER_UP_BUTTON = By.className("Button_Button__ra12g");
     private final By COMPLETE_ORDER = By.xpath(".//div[@class='Order_Modal__YZ-d3']/div/button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
     private final By IS_ORDER_SUCCESS = By.className("Order_ModalHeader__3FDaJ");
+    private final By DROPDOWN_MENU = By.xpath(".//div[@class='Dropdown-menu']/div[2]");
+    private final By ACCEPT_COOKIE_BUTTON = By.className("App_CookieButton__3cvqF");
 
     public OrderScooter(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void goToCheckoutPage() {
+    public void goToCheckoutPageWithUpperButtonOrder() {
         driver.findElement(ORDER_UP_BUTTON).click();
+    }
+
+    public void goToCheckoutPageWithLowerButtonOrder() {
+        driver.findElement(ORDER_BUTTON).click();
+    }
+
+    public void scrollToLowerButtonOrder() {
+        WebElement element = driver.findElement(ORDER_BUTTON);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
     }
 
     public void waitForLoadingPage() {
@@ -71,7 +80,7 @@ public class OrderScooter {
 
     public void closeCookieWindow() {
         if (driver.findElement(COOKIE_WINDOW).isDisplayed()) {
-            driver.findElement(By.className("App_CookieButton__3cvqF")).click();
+            driver.findElement(ACCEPT_COOKIE_BUTTON).click();
         }
     }
 
@@ -95,7 +104,7 @@ public class OrderScooter {
 
     public void fillOrderCountDate() {
         driver.findElement(ORDER_COUNT_DATE).click();
-        driver.findElement(By.xpath(".//div[@class='Dropdown-menu']/div[2]")).click();
+        driver.findElement(DROPDOWN_MENU).click();
     }
 
     public void fillOrderColour() {

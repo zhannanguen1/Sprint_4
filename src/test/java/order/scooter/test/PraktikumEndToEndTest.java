@@ -9,7 +9,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import page.objects.OrderScooter;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
@@ -38,20 +37,38 @@ public class PraktikumEndToEndTest {
     }
 
     @Test
-    public void orderAScooterTest() {
+    public void orderAScooterTestUpperButtonOrder() {
         System.setProperty("webdriver.gecko.driver", "C:/Users/User/Downloads/geckodriver-v0.32.2-win32/geckodriver.exe");
         FirefoxOptions options = new FirefoxOptions();
         driver = new FirefoxDriver(options);
         driver.get("https://qa-scooter.praktikum-services.ru/");
 
         OrderScooter objOrderScooter = new OrderScooter(driver);
-        objOrderScooter.goToCheckoutPage();
+        objOrderScooter.goToCheckoutPageWithUpperButtonOrder();
         objOrderScooter.inputFirstOrderPageAndGo(name, lastName, address, phone);
         objOrderScooter.orderScooter(comment);
         objOrderScooter.clickOnCompleteOrderButton();
         boolean actual = objOrderScooter.isOrderSuccess();
         assertTrue("Заказ не оформлен", actual);
     }
+
+    @Test
+    public void orderAScooterTestLowerButtonOrder() {
+        System.setProperty("webdriver.gecko.driver", "C:/Users/User/Downloads/geckodriver-v0.32.2-win32/geckodriver.exe");
+        FirefoxOptions options = new FirefoxOptions();
+        driver = new FirefoxDriver(options);
+        driver.get("https://qa-scooter.praktikum-services.ru/");
+
+        OrderScooter objOrderScooter = new OrderScooter(driver);
+        objOrderScooter.scrollToLowerButtonOrder();
+        objOrderScooter.goToCheckoutPageWithLowerButtonOrder();
+        objOrderScooter.inputFirstOrderPageAndGo(name, lastName, address, phone);
+        objOrderScooter.orderScooter(comment);
+        objOrderScooter.clickOnCompleteOrderButton();
+        boolean actual = objOrderScooter.isOrderSuccess();
+        assertTrue("Заказ не оформлен", actual);
+    }
+
 
     @After
     public void teardown() {
